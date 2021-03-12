@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["es2017", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": false,
+    "paths": {
+      "to-text": ["src/components"],
+      "atoms": ["src/components/atoms"],
+      "particles": ["src/components/particles"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "strict": false,
+    "target": "es5",
+    "types": ["node", "react"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["src", "index.d.ts"]
+}

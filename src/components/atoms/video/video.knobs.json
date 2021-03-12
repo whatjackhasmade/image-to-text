@@ -1,0 +1,37 @@
+{
+  "autoplay": {
+    "id": "Autoplay",
+    "initial": true,
+    "group": "Behaviour"
+  },
+  "controls": {
+    "id": "Controls",
+    "initial": true,
+    "group": "Behaviour"
+  },
+  "loop": {
+    "id": "Loop",
+    "initial": true,
+    "group": "Behaviour"
+  },
+  "muted": {
+    "id": "Muted",
+    "initial": true,
+    "group": "Behaviour"
+  },
+  "src": {
+    "id": "Video text",
+    "initial": "I am some text in a video",
+    "group": "Content"
+  },
+  "vimeo": {
+    "id": "Vimeo URL",
+    "initial": "https://vimeo.com/264243354",
+    "group": "Content"
+  },
+  "youtube": {
+    "id": "YouTube URL",
+    "initial": "https://youtu.be/iCgdf4pkvtQ",
+    "group": "Content"
+  }
+}

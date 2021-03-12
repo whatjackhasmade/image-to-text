@@ -1,0 +1,13 @@
+{
+  "percentage": {
+    "id": "Loaded Amount (%)",
+    "initial": 40,
+    "options": {
+      "range": true,
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    "group": "Data"
+  }
+}

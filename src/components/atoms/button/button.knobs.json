@@ -1,0 +1,7 @@
+{
+  "button_text": {
+    "id": "Button text",
+    "initial": "I am some text in a button",
+    "group": "Content"
+  }
+}

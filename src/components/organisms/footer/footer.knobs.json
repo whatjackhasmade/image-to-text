@@ -1,0 +1,44 @@
+{
+  "footerMenu": {
+    "id": "Menu",
+    "initial": {
+      "id": "dGVybToz",
+      "menuId": 3,
+      "locations": ["FOOTER_ONE"],
+      "name": "Footer - Primary",
+      "slug": "footer-primary",
+      "menuItems": {
+        "nodes": [
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozNg==",
+            "label": "Terms",
+            "path": "/terms/",
+            "target": null,
+            "title": null,
+            "url": "/terms/"
+          },
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozNw==",
+            "label": "Privacy Policy",
+            "path": "/privacy-policy/",
+            "target": null,
+            "title": null,
+            "url": "/privacy-policy/"
+          },
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozOA==",
+            "label": "Cookie Policy",
+            "path": "/cookie-policy/",
+            "target": null,
+            "title": null,
+            "url": "/cookie-policy/"
+          }
+        ]
+      }
+    },
+    "group": "Content"
+  }
+}

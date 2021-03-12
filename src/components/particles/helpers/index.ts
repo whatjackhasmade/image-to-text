@@ -1,0 +1,11 @@
+export * from './datePretty';
+export * from './dateStamp';
+export { decodeHTML } from './decodeHTML';
+export * from './differencesBetweenObjects';
+export { hexToRGB } from './hexToRGB';
+export { generateID } from './generateID';
+export { isAnObject } from './isAnObject';
+export { isEmptyObject } from './isEmptyObject';
+export { isInternal } from './isInternal';
+export { isString } from './isString';
+export { windowAvailable } from './windowAvailable';

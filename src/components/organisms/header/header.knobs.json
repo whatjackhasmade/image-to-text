@@ -1,0 +1,62 @@
+{
+  "headerMenu": {
+    "id": "Menu",
+    "initial": {
+      "id": "dGVybToy",
+      "menuId": 2,
+      "locations": ["PRIMARY"],
+      "name": "Header - Primary",
+      "slug": "header-primary",
+      "menuItems": {
+        "nodes": [
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozMw==",
+            "label": "Work",
+            "path": "/work/",
+            "target": null,
+            "title": null,
+            "url": "/work/"
+          },
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozMg==",
+            "label": "Reel",
+            "path": "/reel/",
+            "target": null,
+            "title": null,
+            "url": "/reel/"
+          },
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozMA==",
+            "label": "About",
+            "path": "/about/",
+            "target": null,
+            "title": null,
+            "url": "/about/"
+          },
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbToyOQ==",
+            "label": "Stories",
+            "path": "/stories/",
+            "target": null,
+            "title": null,
+            "url": "/stories/"
+          },
+          {
+            "cssClasses": [],
+            "id": "bmF2X21lbnVfaXRlbTozMQ==",
+            "label": "Contact",
+            "path": "/contact/",
+            "target": null,
+            "title": null,
+            "url": "/contact/"
+          }
+        ]
+      }
+    },
+    "group": "Content"
+  }
+}
