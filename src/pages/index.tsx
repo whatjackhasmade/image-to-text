@@ -90,7 +90,7 @@ const UploadForm = () => {
 
   return (
     <section>
-      {url && <img src={url} />}
+      {url && <img src={String(url)} />}
       {image && <img src={image.src} />}
       {loading && "We're figuring out what the text in the image says. Please wait..."}
       <div {...getRootProps()}>
