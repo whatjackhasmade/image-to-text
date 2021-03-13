@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createWorker } from 'tesseract.js';
 import { useDropzone } from 'react-dropzone';
 import { useFormik } from 'formik';
 
@@ -39,16 +38,18 @@ const UploadForm = () => {
     const image = new Image();
     image.src = URL.createObjectURL(file);
 
-    const worker = createWorker();
-
-    await worker.load();
-    await worker.loadLanguage('eng');
-    await worker.initialize('eng');
-
     try {
-      const response = await worker.recognize(file);
-      const { data } = response;
-      const { text } = data;
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const options = {
+        method: 'POST',
+        body: formData,
+      };
+
+      const request = await fetch('/api/read', options);
+      const response = await request.json();
+      const { text } = response;
 
       setFieldValue(`data`, text);
     } catch (err) {
