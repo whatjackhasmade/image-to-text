@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createWorker } from 'tesseract.js';
 import { useDropzone } from 'react-dropzone';
 import { useFormik } from 'formik';
 
@@ -13,6 +14,7 @@ const CreateReport = props => {
 };
 
 const UploadForm = () => {
+  const [image, setImage] = React.useState<any>(null);
   const [error, setError] = React.useState<any>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
 
@@ -35,21 +37,20 @@ const UploadForm = () => {
     // Do something with the files
     const [file] = acceptedFiles;
 
-    const image = new Image();
-    image.src = URL.createObjectURL(file);
+    const imageObject = new Image();
+    imageObject.src = URL.createObjectURL(file);
+    setImage(imageObject);
+
+    const worker = createWorker();
+
+    await worker.load();
+    await worker.loadLanguage('eng');
+    await worker.initialize('eng');
 
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const options = {
-        method: 'POST',
-        body: formData,
-      };
-
-      const request = await fetch('/api/read', options);
-      const response = await request.json();
-      const { text } = response;
+      const response = await worker.recognize(file);
+      const { data } = response;
+      const { text } = data;
 
       setFieldValue(`data`, text);
     } catch (err) {
@@ -62,6 +63,7 @@ const UploadForm = () => {
 
   return (
     <section>
+      {image && <img src={image.src} />}
       {loading && "We're figuring out what the text in the image says. Please wait..."}
       <div {...getRootProps()}>
         <input {...getInputProps()} />
