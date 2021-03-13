@@ -13,6 +13,8 @@ const CreateReport = props => {
   );
 };
 
+const worker = createWorker();
+
 const UploadForm = () => {
   const [image, setImage] = React.useState<any>(null);
   const [error, setError] = React.useState<any>(null);
@@ -22,9 +24,7 @@ const UploadForm = () => {
     initialValues: {
       data: '',
     },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: undefined,
   });
 
   const { handleChange, setFieldValue } = formik;
@@ -40,8 +40,6 @@ const UploadForm = () => {
     const imageObject = new Image();
     imageObject.src = URL.createObjectURL(file);
     setImage(imageObject);
-
-    const worker = createWorker();
 
     await worker.load();
     await worker.loadLanguage('eng');
