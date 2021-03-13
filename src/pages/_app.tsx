@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
+import "../components/particles/mvp.css"
+import "../components/particles/site.css"
 
-import { GlobalStyle } from 'to-text';
 import { ThemeDefault } from 'to-text';
 
 declare type MyAppProps = {
@@ -14,7 +15,6 @@ export default function MyApp(props: MyAppProps) {
 
   return (
     <ThemeProvider theme={ThemeDefault}>
-      <GlobalStyle />
       <Component {...pageProps} />
     </ThemeProvider>
   );

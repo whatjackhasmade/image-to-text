@@ -2,13 +2,11 @@ import * as React from 'react';
 
 import { Link } from 'to-text';
 
-import StyledFooter from './footer.styles';
-
 type FooterProps = {};
 
 const Footer = (props: FooterProps) => {
   return (
-    <StyledFooter>
+    <footer>
       <div className="footer__contents">
         <div className="footer__footnote">
           <nav className="footer__footnote__navigation"></nav>
@@ -19,7 +17,7 @@ const Footer = (props: FooterProps) => {
           </span>
         </div>
       </div>
-    </StyledFooter>
+    </footer>
   );
 };
 

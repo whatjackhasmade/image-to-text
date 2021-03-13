@@ -1,0 +1,28 @@
+textarea {
+	min-height: 150px;
+	width: 100%;
+}
+
+.upload-form {
+	display: block;
+	width: 100%;
+
+	text-align: center;
+}
+
+.upload-form > * {
+	margin: 0 auto 24px;
+}
+
+
+
+.dropzone {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 400px;
+	max-width: var(--width-card-wide);
+	width: 100%;
+
+	border: 1px  dashed #282828;
+}

@@ -36,6 +36,7 @@ const UploadForm = () => {
   const router = useRouter();
   const url = router?.query?.url;
 
+  const [original, setOriginal] = React.useState<string>(``);
   const [image, setImage] = React.useState<any>(null);
   const [error, setError] = React.useState<any>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -53,12 +54,12 @@ const UploadForm = () => {
 
   const readImage = async file => {
     setLoading(true);
+    setFieldValue(`data`, ``);
+    setOriginal(``)
 
     await worker.load();
     await worker.loadLanguage('eng');
     await worker.initialize('eng');
-
-    console.log(file);
 
     try {
       const response = await worker.recognize(file);
@@ -66,6 +67,7 @@ const UploadForm = () => {
       const { text } = data;
 
       setFieldValue(`data`, text);
+      setOriginal(text)
     } catch (err) {
       setError(err);
     } finally {
@@ -77,7 +79,7 @@ const UploadForm = () => {
     if (!url) return;
 
     const fetchBlob = async () => {
-      const externalSrc = await fetch('https://cors-anywhere.herokuapp.com/' + String(url));
+      const externalSrc = await fetch('https://nomore-cors.herokuapp.com/' + String(url));
       const blob = await externalSrc.blob();
       const file = blobToFile(blob, `external`);
       readImage(file);
@@ -97,27 +99,36 @@ const UploadForm = () => {
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  const handleTitleCase = e => {
+    const handleClickRevert = e => {
+    e.preventDefault();
+    const hasOriginal: boolean = Boolean(original);
+    if(!hasOriginal) return;
+
+    setFieldValue(`data`, original);
+  };
+
+  const handleClickTitleCase = e => {
     e.preventDefault();
     const toTitle = titleCase(data);
     setFieldValue(`data`, toTitle);
   };
 
   return (
-    <section>
-      {url && <img src={String(url)} />}
-      {image && <img src={image.src} />}
-      {loading && "We're figuring out what the text in the image says. Please wait..."}
-      <div {...getRootProps()}>
+    <section className="upload-form">
+      {url && <img style={{display: `block`, maxWidth: `400px`}} src={String(url)} />}
+      {image && <img style={{display: `block`, maxWidth: `400px`}} src={image.src} />}
+      {loading && <p>"We're figuring out what the text in the image says. Please wait..."</p>}
+      {data && (
+        <React.Fragment>
+          <textarea id="data" name="data" onChange={handleChange} value={data}></textarea>
+          <button onClick={handleClickRevert}>Undo Changes</button>
+          <button onClick={handleClickTitleCase}>Convert to Title Case</button>
+        </React.Fragment>
+      )}
+      <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />
         {isDragActive ? <p>Drop the files here ...</p> : <p>Drag 'n' drop some files here, or click to select files</p>}
       </div>
-      {data && (
-        <React.Fragment>
-          <button onClick={handleTitleCase}>Convert to Title Case</button>
-          <textarea id="data" name="data" onChange={handleChange} value={data}></textarea>
-        </React.Fragment>
-      )}
     </section>
   );
 };
