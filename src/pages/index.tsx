@@ -14,6 +14,15 @@ const CreateReport = props => {
   );
 };
 
+function titleCase(sentence: string) {
+  let newString = sentence.toLowerCase().split(' ');
+  for (let i = 0; i < newString.length; i++) {
+    newString[i] = newString[i][0].toUpperCase() + newString[i].slice(1);
+  }
+
+  return newString.join(' ');
+}
+
 function blobToFile(theBlob, fileName) {
   //A Blob() is almost a File() - it's just missing the two properties below which we will add
   theBlob.lastModifiedDate = new Date();
@@ -88,6 +97,12 @@ const UploadForm = () => {
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+  const handleTitleCase = e => {
+    e.preventDefault();
+    const toTitle = titleCase(data);
+    setFieldValue(`data`, toTitle);
+  };
+
   return (
     <section>
       {url && <img src={String(url)} />}
@@ -97,7 +112,12 @@ const UploadForm = () => {
         <input {...getInputProps()} />
         {isDragActive ? <p>Drop the files here ...</p> : <p>Drag 'n' drop some files here, or click to select files</p>}
       </div>
-      {data && <textarea id="data" name="data" onChange={handleChange} value={data}></textarea>}
+      {data && (
+        <React.Fragment>
+          <button onClick={handleTitleCase}>Convert to Title Case</button>
+          <textarea id="data" name="data" onChange={handleChange} value={data}></textarea>
+        </React.Fragment>
+      )}
     </section>
   );
 };
